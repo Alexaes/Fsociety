@@ -1,0 +1,60 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fsociety Access</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: black;
+      color: #00ff00;
+      font-family: 'Courier New', Courier, monospace;
+      overflow: hidden;
+    }
+    .screen {
+      padding: 20px;
+      animation: flicker 0.1s infinite;
+    }
+    @keyframes flicker {
+      0% {opacity: 1;}
+      50% {opacity: 0.8;}
+      100% {opacity: 1;}
+    }
+    .warning {
+      color: red;
+      font-weight: bold;
+      font-size: 1.2em;
+      margin-top: 20px;
+    }
+    .bar {
+      width: 0%;
+      height: 20px;
+      background-color: red;
+      animation: load 5s forwards;
+      margin-top: 10px;
+    }
+    @keyframes load {
+      to { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="screen">
+    <h2>📡 Establishing secure connection to target...</h2>
+    <p>IP: <span id="ip">196.XXX.XXX.XXX</span></p>
+    <p>Location: Morocco</p>
+    <p>📸 Accessing camera...</p>
+    <p>🧠 Facial recognition active...</p>
+    <p>✅ Match found: <strong>Fsociety ID: 0031A</strong></p>
+    <div class="warning">⚠️ Downloading private files...</div>
+    <div class="bar"></div>
+    <p style="margin-top:20px">🖼️ Preview:</p>
+    <img src="https://i.imgur.com/4AiXzf8.jpeg" alt="Leaked Image" style="width: 300px; border: 2px solid red;">
+    <p class="warning">☠️ System breach in progress...<br>Fsociety Control Panel Active.</p>
+  </div>
+  <audio autoplay>
+    <source src="https://www.soundjay.com/button/beep-07.wav" type="audio/wav">
+  </audio>
+</body>
+</html>
