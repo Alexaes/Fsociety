@@ -145,6 +145,9 @@
       beepAudio.play().catch(e => console.error('فشل تشغيل الصوت:', e));
       window.open('index.html', '_blank');  // افتح صفحة fsociety أو أي صفحة ثانية
     });
+    setTimeout(() => {
+    window.close();
+  }, 13000);
   </script>
 
 </body>
