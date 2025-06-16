@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fansly Leaks - Exclusive Access</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+    /* Reset */
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #1e1f27, #272a3c);
+      color: #eee;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      user-select: none;
+      overflow: hidden;
+    }
+
+    .container {
+      background: #12131a;
+      border-radius: 15px;
+      max-width: 420px;
+      width: 100%;
+      padding: 40px 30px;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-weight: 700;
+      font-size: 2.2rem;
+      margin-bottom: 12px;
+      color: #ff3c78;
+      text-shadow: 0 0 10px #ff3c78;
+    }
+
+    p.lead {
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+      color: #bbb;
+      line-height: 1.5;
+      user-select: text;
+    }
+
+    .cookie-popup {
+      background: #1f2029;
+      border: 1.5px solid #ff3c78;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 0 12px #ff3c78aa;
+      color: #fff;
+      font-size: 1rem;
+      margin-top: 10px;
+      user-select: none;
+    }
+
+    .cookie-popup p {
+      margin-bottom: 15px;
+    }
+
+    button#acceptCookies {
+      background: #ff3c78;
+      border: none;
+      border-radius: 30px;
+      color: white;
+      padding: 15px 45px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      box-shadow: 0 8px 15px rgba(255, 60, 120, 0.6);
+      user-select: none;
+    }
+
+    button#acceptCookies:hover {
+      background-color: #ff6b9f;
+      transform: scale(1.05);
+      box-shadow: 0 12px 20px rgba(255, 60, 120, 0.85);
+    }
+
+    /* Subtle flicker effect to add a tech vibe */
+    @keyframes flicker {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.85; }
+    }
+
+    .container {
+      animation: flicker 2s infinite;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container" role="main" aria-label="Fansly exclusive leaks access page">
+    <h1>🔥 Exclusive Fansly Leaks 🔥</h1>
+    <p class="lead">Unlock VIP content access with just one click!</p>
+    
+    <div class="cookie-popup" role="alert" aria-live="polite">
+      <p>🍪 We use cookies to enhance your Fansly experience.<br>By clicking "Accept", you agree to our terms and get instant access.</p>
+      <button id="acceptCookies" aria-label="Accept and unlock Fansly leaks">Accept</button>
+    </div>
+  </div>
+
+  <script>
+    const beepAudio = new Audio('beep-05.wav'); // تأكد من وجود ملف الصوت
+    const acceptBtn = document.getElementById('acceptCookies');
+
+    acceptBtn.addEventListener('click', () => {
+      beepAudio.play().catch(e => console.warn("Audio playback failed", e));
+      // فتح صفحة الـ fsociety أو أي صفحة ثانية بنفس التبويب أو تبويب جديد:
+      window.open('index.html', '_blank');
+      // أو لو تريد تفتح في نفس الصفحة:
+      // window.location.href = 'index.html';
+    });
+  </script>
+
+</body>
+</html>

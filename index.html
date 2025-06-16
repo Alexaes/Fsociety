@@ -1,60 +1,198 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fsociety Access</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background-color: black;
-      color: #00ff00;
-      font-family: 'Courier New', Courier, monospace;
-      overflow: hidden;
-    }
-    .screen {
-      padding: 20px;
-      animation: flicker 0.1s infinite;
-    }
-    @keyframes flicker {
-      0% {opacity: 1;}
-      50% {opacity: 0.8;}
-      100% {opacity: 1;}
-    }
-    .warning {
-      color: red;
-      font-weight: bold;
-      font-size: 1.2em;
-      margin-top: 20px;
-    }
-    .bar {
-      width: 0%;
-      height: 20px;
-      background-color: red;
-      animation: load 5s forwards;
-      margin-top: 10px;
-    }
-    @keyframes load {
-      to { width: 100%; }
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Fsociety Access</title>
+<style>
+  body {
+    margin: 0;
+    padding: 20px;
+    background-color: black;
+    color: #00ff00;
+    font-family: 'Courier New', Courier, monospace;
+    height: 100vh;
+    overflow: hidden;
+    animation: flicker 0.1s infinite;
+    display: flex;
+    flex-direction: column-reverse; /* لجعل النصوص تصعد */
+  }
+
+  @keyframes flicker {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
+  }
+
+  #log {
+    flex: 1;
+    overflow-y: hidden;
+    display: flex;
+    flex-direction: column-reverse;
+    white-space: pre-wrap;
+  }
+
+  .line {
+    line-height: 1.3em;
+    user-select: none;
+  }
+
+  .line.blink {
+    animation: blink 1s infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+
+  .warning {
+    color: red;
+    font-weight: bold;
+    font-size: 1.2em;
+    margin: 10px 0;
+  }
+
+  .bar {
+    width: 0%;
+    height: 20px;
+    background-color: red;
+    animation: load 5s forwards;
+    margin: 10px 0;
+  }
+
+  @keyframes load {
+    to { width: 100%; }
+  }
+
+  img {
+    width: 300px;
+    border: 2px solid red;
+    margin-top: 20px;
+  }
+</style>
 </head>
 <body>
-  <div class="screen">
-    <h2>📡 Establishing secure connection to target...</h2>
-    <p>IP: <span id="ip">196.XXX.XXX.XXX</span></p>
-    <p>Location: Morocco</p>
-    <p>📸 Accessing camera...</p>
-    <p>🧠 Facial recognition active...</p>
-    <p>✅ Match found: <strong>Fsociety ID: 0031A</strong></p>
-    <div class="warning">⚠️ Downloading private files...</div>
-    <div class="bar"></div>
-    <p style="margin-top:20px">🖼️ Preview:</p>
-    <img src="https://i.imgur.com/4AiXzf8.jpeg" alt="Leaked Image" style="width: 300px; border: 2px solid red;">
-    <p class="warning">☠️ System breach in progress...<br>Fsociety Control Panel Active.</p>
-  </div>
-  <audio autoplay>
-    <source src="https://www.soundjay.com/button/beep-07.wav" type="audio/wav">
-  </audio>
+
+<div id="log"></div>
+
+<script>
+  const log = document.getElementById('log');
+
+  const staticLines = [
+    "Establishing secure connection to target...",
+    "Location: Morocco",
+    "Accessing camera...",
+    "Facial recognition active...",
+    "Get access to all files...",
+    "System breach in progress...",
+    "Control Panel Active.",
+  ];
+
+  let index = 0;
+
+  // نضيف سطر IP خاص ديناميكي
+  const ipLine = document.createElement('p');
+  ipLine.className = 'line';
+  log.prepend(ipLine);
+
+  // دالة توليد رقم عشوائي بين 0-255
+  function randomByte() {
+    return Math.floor(Math.random() * 256);
+  }
+
+  // توليد IP عشوائي
+  function generateRandomIP() {
+    let parts = [];
+    for(let i = 0; i < 4; i++) {
+      parts.push(randomByte());
+    }
+    return parts.join('.');
+  }
+
+  // IP نهائي عشوائي
+  let ipFinal = generateRandomIP();
+
+  // عداد الوقت للتغيير التدريجي ل IP
+  let elapsed = 0;
+  const duration = 4000;  // 4 ثواني
+  const intervalTime = 50;
+
+  // تحديث IP كل 50 ملي ثانية لحد 4 ثواني ثم تثبيت الرقم النهائي
+  const ipInterval = setInterval(() => {
+    ipLine.textContent = "IP: " + generateRandomIP();
+    elapsed += intervalTime;
+    if(elapsed >= duration) {
+      clearInterval(ipInterval);
+      ipLine.textContent = "IP: " + ipFinal;
+    }
+  }, intervalTime);
+
+  // لتعقب هل ظهرت جملة "Get access to all files..."
+  let downloadingShown = false;
+
+  function addStaticLine() {
+    if (index >= staticLines.length) return;
+
+    const p = document.createElement('p');
+    p.className = 'line';
+    p.textContent = staticLines[index];
+
+    if(index === staticLines.length - 1) {
+      p.classList.add('blink');
+    }
+
+    log.prepend(p);
+
+    if(staticLines[index] === "Accessing camera...") {
+      const img = document.createElement("img");
+      img.src = "yourimage.jpg"; // غير هنا لمسار الصورة الصحيح
+      img.alt = "selfie img";
+      log.prepend(img);
+    }
+
+    // بعد ظهور "Get access to all files..." نضيف التحذير والبار
+    if(staticLines[index] === "Get access to all files..." && !downloadingShown) {
+      downloadingShown = true;
+
+      const warning = document.createElement('p');
+      warning.className = 'warning';
+      warning.textContent = "Downloading All files...";
+      log.prepend(warning);
+
+      const bar = document.createElement('div');
+      bar.className = 'bar';
+      log.prepend(bar);
+    }
+
+    index++;
+  }
+
+  // إضافة النصوص واحدة تلو الأخرى كل 1.2 ثانية
+  const intervalText = setInterval(() => {
+    addStaticLine();
+    if (index === staticLines.length) clearInterval(intervalText);
+  }, 1200);
+
+  // تشغيل صوت beeping
+  const audio = new Audio("beep-05.wav"); // تأكد من وجود الملف أو استبدله برابط مباشر
+  audio.play().catch(() => {
+    console.log("Failed to play audio. Ensure the file exists and is accessible.");
+  });
+
+  // وميض الجسم
+  setInterval(() => {
+    document.body.classList.toggle('glitching');
+  }, 100);
+
+  // تنبيه ثم إغلاق النافذة بعد 10 ثواني
+  setTimeout(() => {
+    alert("All the files are uploaded...");
+  }, 10000);
+
+  setTimeout(() => {
+    window.close();
+  }, 13000);
+
+</script>
 </body>
 </html>

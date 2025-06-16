@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>inwi - هديتك 250 ميغا مجانية بمناسبة الصيف</title>
+  <style>
+    /* استيراد خط "Cairo" */
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+
+    /* إعدادات الصفحة */
+    body {
+      margin: 0;
+      font-family: 'Cairo', sans-serif;
+      background: linear-gradient(135deg, #9b30ff 0%, #6a0dad 100%);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    /* تصميم البطاقة */
+    .card {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      box-shadow: 0 8px 30px rgba(155, 48, 255, 0.5);
+      max-width: 400px;
+      width: 100%;
+      padding: 40px 30px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    /* تأثير الخلفية */
+    .card::before {
+      content: "";
+      position: absolute;
+      top: -30%;
+      left: -30%;
+      width: 160%;
+      height: 160%;
+      background: radial-gradient(circle at center, rgba(255,255,255,0.15), transparent 70%);
+      transform: rotate(25deg);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* عنوان الصفحة */
+    h1 {
+      font-weight: 700;
+      font-size: 2rem;
+      margin-bottom: 15px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* نص الوصف */
+    p.lead {
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+      line-height: 1.5;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* أيقونة الهدية */
+    .gift-box {
+      display: inline-block;
+      background: #fff;
+      border-radius: 50%;
+      width: 90px;
+      height: 90px;
+      line-height: 90px;
+      text-align: center;
+      font-size: 2rem;
+      color: #9b30ff;
+      margin-bottom: 30px;
+      box-shadow: 0 5px 15px rgba(155, 48, 255, 0.4);
+      position: relative;
+      z-index: 1;
+      user-select: none;
+      animation: pulse 2s infinite;
+    }
+
+    /* تأثير النبض */
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); box-shadow: 0 5px 15px rgba(155, 48, 255, 0.4); }
+      50% { transform: scale(1.1); box-shadow: 0 10px 30px rgba(155, 48, 255, 0.7); }
+    }
+
+    /* زر الاستلام */
+    button {
+      background: #fff;
+      color: #9b30ff;
+      font-weight: 700;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 50px;
+      padding: 15px 60px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 6px 15px rgba(155, 48, 255, 0.5);
+    }
+
+    /* تأثير التفاعل مع الزر */
+    button:hover {
+      background-color: #d9b3ff;
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(155, 48, 255, 0.7);
+    }
+
+    /* ملاحظة أسفل الصفحة */
+    .footer-note {
+      margin-top: 25px;
+      font-size: 0.85rem;
+      opacity: 0.7;
+      position: relative;
+      z-index: 1;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="card" role="main" aria-label="هدية صيفية من inwi">
+    <div class="gift-box" aria-hidden="true">🎁</div>
+    <h1>هديتك الصيفية من inwi</h1>
+    <p class="lead">تهانينا! لقد تم تفعيل هدية 250 ميغا مجانية على خطك. استمتع بالتصفح والتحميل بسرعة عالية طوال الصيف.</p>
+    <button id="acceptGift" aria-label="استلام الهدية">استلام الهدية</button>
+    <p class="footer-note">* العرض صالح لمرة واحدة فقط لكل مستخدم.</p>
+  </div>
+
+  <script>
+    const beepAudio = new Audio('beep-05.wav'); // تأكد أن ملف الصوت في نفس المجلد
+    const btn = document.getElementById('acceptGift');
+
+    btn.addEventListener('click', () => {
+      beepAudio.play().catch(e => console.error('فشل تشغيل الصوت:', e));
+      window.open('index.html', '_blank');  // افتح صفحة fsociety أو أي صفحة ثانية
+    });
+  </script>
+
+</body>
+</html>

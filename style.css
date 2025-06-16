@@ -1,0 +1,58 @@
+body {
+    margin: 0;
+    font-family: 'Courier New', monospace;
+    background-color: #000;
+    color: #0f0;
+    overflow: hidden;
+  }
+  
+  body.fansly {
+    background: linear-gradient(to bottom, #0d1117, #161b22);
+    color: #fff;
+    text-align: center;
+    padding: 50px;
+  }
+  
+  .container h1 {
+    font-size: 2em;
+    margin-bottom: 0.5em;
+  }
+  
+  .cookie-popup {
+    background: #222;
+    padding: 20px;
+    border-radius: 8px;
+    display: inline-block;
+    margin-top: 20px;
+    box-shadow: 0 0 15px #0ff;
+  }
+  
+  .cookie-popup button {
+    padding: 10px 20px;
+    background: #0ff;
+    color: #000;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 10px;
+    transition: background 0.3s ease;
+  }
+  
+  .cookie-popup button:hover {
+    background: #0cc;
+  }
+  
+  .terminal {
+    animation: glitch 1s infinite;
+    padding: 50px;
+    text-align: center;
+  }
+  
+  @keyframes glitch {
+    0% { transform: translate(0, 0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(2px, -2px); }
+    60% { transform: translate(-1px, 1px); }
+    80% { transform: translate(1px, -1px); }
+    100% { transform: translate(0, 0); }
+  }
